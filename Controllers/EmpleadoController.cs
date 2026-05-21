@@ -94,10 +94,11 @@ namespace PWS26ApiServer.Controllers
 
                 _dbContext.TbEmpleados.Add(dbEmpleado);
                 await _dbContext.SaveChangesAsync();
-                if (responseApi.EsCorrecto)
+                
+                if (dbEmpleado.IdEmpleado != 0)
                 {
                     responseApi.EsCorrecto = true;
-                    //responseApi.Valor = ;
+                    responseApi.Valor = dbEmpleado.IdEmpleado;
                 }
                 else
                 {
@@ -117,22 +118,60 @@ namespace PWS26ApiServer.Controllers
         [Route("Editar/{id}")]
         public async Task<IActionResult> Editar(EmpleadoDTO empleado, int id)
         {
-            var responseApi = new ResponseAPI<EmpleadoDTO>();
-            var empleadoDTO = new EmpleadoDTO();
+            var responseApi = new ResponseAPI<int>();
 
             try
             {
                 var dbEmpleado = await _dbContext.TbEmpleados.FirstOrDefaultAsync(x => x.IdEmpleado == id);
                 if (dbEmpleado != null)
                 {
-                    empleadoDTO.IdEmpleado = dbEmpleado.IdEmpleado;
-                    empleadoDTO.NombreCompleto = dbEmpleado.NombreCompleto;
-                    empleadoDTO.Sueldo = dbEmpleado.Sueldo;
-                    empleadoDTO.IdDepartamento = dbEmpleado.IdDepartamento;
-                    empleadoDTO.FechaContrato = dbEmpleado.FechaContrato;
+                    dbEmpleado.NombreCompleto = empleado.NombreCompleto;
+                    dbEmpleado.Sueldo = empleado.Sueldo;
+                    dbEmpleado.IdDepartamento = empleado.IdDepartamento;
+                    dbEmpleado.FechaContrato = empleado.FechaContrato;
+
+                    _dbContext.TbEmpleados.Update(dbEmpleado);
+                    await _dbContext.SaveChangesAsync();
 
                     responseApi.EsCorrecto = true;
-                    responseApi.Valor = empleadoDTO;
+                    responseApi.Valor = dbEmpleado.IdDepartamento;
+                }
+                else
+                {
+                    responseApi.EsCorrecto = false;
+                    responseApi.Mensaje = "Empleado no encontrado";
+                }
+            }
+            catch (Exception ex)
+            {
+                responseApi.EsCorrecto = false;
+                responseApi.Mensaje = ex.Message;
+            }
+            return Ok(responseApi);
+        }
+
+        [HttpDelete]
+        [Route("Eliminar/{id}")]
+        public async Task<IActionResult> Eliminar(int id)
+        {
+            var responseApi = new ResponseAPI<int>();
+
+            try
+            {
+                var dbEmpleado = await _dbContext.TbEmpleados.FirstOrDefaultAsync(x => x.IdEmpleado == id);
+
+                if (dbEmpleado != null)
+                {
+
+                    _dbContext.TbEmpleados.Remove(dbEmpleado);
+                    await _dbContext.SaveChangesAsync();
+
+                    responseApi.EsCorrecto = true;
+                }
+                else
+                {
+                    responseApi.EsCorrecto = false;
+                    responseApi.Mensaje = "Empleado no encontrado";
                 }
             }
             catch (Exception ex)
