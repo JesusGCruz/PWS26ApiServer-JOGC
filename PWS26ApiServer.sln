@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37111.16 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWS26ApiServer", "PWS26ApiServer.csproj", "{CE35CA25-DD9D-47FC-AA45-930E7B2FAFC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PWS26ApiBiblioteca", "..\PWS26ApiBiblioteca\PWS26ApiBiblioteca.csproj", "{ED030976-032F-45CD-B746-C0C67192B78D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE35CA25-DD9D-47FC-AA45-930E7B2FAFC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE35CA25-DD9D-47FC-AA45-930E7B2FAFC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE35CA25-DD9D-47FC-AA45-930E7B2FAFC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE35CA25-DD9D-47FC-AA45-930E7B2FAFC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED030976-032F-45CD-B746-C0C67192B78D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED030976-032F-45CD-B746-C0C67192B78D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED030976-032F-45CD-B746-C0C67192B78D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED030976-032F-45CD-B746-C0C67192B78D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B50BE723-85F7-4307-B5E3-F00CCAA211AE}
+	EndGlobalSection
+EndGlobal

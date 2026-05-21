@@ -1,0 +1,6 @@
+@PWS26ApiServer_HostAddress = http://localhost:5232
+
+GET {{PWS26ApiServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
