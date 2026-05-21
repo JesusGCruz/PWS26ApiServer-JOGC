@@ -15,6 +15,14 @@ builder.Services.AddDbContext<BdPws26Context>(opciones =>
     opciones.UseSqlServer(builder.Configuration.GetConnectionString("cadenaSQL"));
 });
 
+builder.Services.AddCors(opciones =>
+{
+    opciones.AddPolicy("nuevaPolitica", app =>
+    {
+        app.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,6 +31,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("nuevaPolitica");
 
 app.UseAuthorization();
 
